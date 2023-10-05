@@ -11,8 +11,23 @@ echo \
 sudo apt-get update
 sudo apt-get install git docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 # user config
-sudo useradd dockeruser
+sudo adduser dockeruser
 sudo usermod -a -G docker dockeruser
-mkdir bash
+mkdir .bash
 #add bash folder to path
-echo "export PATH=\"\$PATH:$HOME/bash\"" >> ~/.bashrc
+echo "export PATH=\"\$PATH:$HOME/.bash\"" >> ~/.bashrc
+source ~/.bashrc
+git clone "https://github.com/Zibox/bash"
+cp -R bash/functions/. .bash
+#grant exec on files
+find .bash -type f -iname "*.sh" -exec sudo chmod +x {} \;
+newfolder.sh sql
+cat <<EOL > $output_file
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - '80:80'
+EOL
