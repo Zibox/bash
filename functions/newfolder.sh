@@ -7,8 +7,8 @@ fi
 dirToMake="/home/dockeruser/$1"
 if [ ! -d "$dirToMake" ]
 then
-    mkdir "$dirToMake"
-    chown dockeruser:dockeruser "$dirToMake"
+    sudo mkdir "$dirToMake"
+    sudo chown dockeruser:dockeruser "$dirToMake"
 else
     echo "Error: Directory $dirToMake already exists!"
 fi
